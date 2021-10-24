@@ -1,0 +1,125 @@
+{
+  "default_bindings": [
+   {
+   }
+  ], 
+  "actions": [
+    {
+      "name": "/actions/haptic/out/HapticsLeft",
+      "type": "vibration"
+    },
+    {
+      "name": "/actions/haptic/out/HapticsRight",
+      "type": "vibration"
+    },
+    {
+      "name": "/actions/main/in/a",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/b",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/x",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/y",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/rb",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/lb",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/menu",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/guide",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/lthumbp",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/rthumbp",
+      "requirement": "optional",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/rthumb",
+      "requirement": "optional",
+      "type": "vector2"
+    },	
+    {
+      "name": "/actions/main/in/lthumb",
+      "requirement": "optional",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/main/in/rt",
+      "requirement": "optional",
+      "type": "vector1"
+    },		
+    {
+      "name": "/actions/main/in/lt",
+      "requirement": "optional",
+      "type": "vector1"
+    },			
+	
+  ],
+  "action_sets": [
+    {
+      "name": "/actions/main",
+      "usage": "leftright"
+    },
+    {
+      "name": "/actions/haptic",
+      "usage": "leftright"
+    }
+
+  ],
+  "localization" : [
+   {
+       "language_tag": "en_US",
+
+        "/actions/haptic" : "Haptics",
+        "/actions/main" : "Main",
+
+        "/actions/main/in/a" : "A Button",
+		"/actions/main/in/b" : "B Button",
+		"/actions/main/in/x" : "X Button",
+	    "/actions/main/in/y" : "Y Button",
+		"/actions/main/in/rb" : "RB Button",
+		"/actions/main/in/lb" : "LB Button",
+		"/actions/main/in/menu" : "Menu Button",
+		"/actions/main/in/guide" : "Guide Button",
+		"/actions/main/in/rt" : "Right Trigger",
+		"/actions/main/in/lt" : "Left Trigger",
+		"/actions/main/in/lthumbp" : "Left Thumbstick Press",
+		"/actions/main/in/rthumbp" : "Right Thumbstick Press",
+		"/actions/main/in/lthumb" : "Left Thumbstick",
+		"/actions/main/in/rthumb" : "Right Thumbstick",
+						
+
+        "/actions/haptic/out/HapticsLeft" : "Haptics Left",
+        "/actions/haptic/out/HapticsRight" : " Haptics Right",
+    }
+  ]
+}
