@@ -4,8 +4,10 @@ add_subdirectory(include)
 project(OVR_Controller)
 
 set(SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/ovrinput/ivrinput.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/ovrinput/ivrinput.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/AppManifest.cpp)
 set(HEADERS
+    ${CMAKE_CURRENT_SOURCE_DIR}/AppManifest.h
     ${CMAKE_CURRENT_SOURCE_DIR}/ovrinput/ivrinput.h
     ${CMAKE_CURRENT_SOURCE_DIR}/ovrinput/ivrinput_action_set.h
     ${CMAKE_CURRENT_SOURCE_DIR}/ovrinput/ivrinput_input_source.h
