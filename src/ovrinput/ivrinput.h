@@ -20,14 +20,19 @@ namespace input
         constexpr auto yButton = "/actions/main/in/y";
         constexpr auto rbButton = "/actions/main/in/rb";
         constexpr auto lbButton = "/actions/main/in/lb";
-        constexpr auto menuButton = "/actions/main/in/menu";
-        constexpr auto GuideButton = "/actions/main/in/guide";
+        constexpr auto startButton = "/actions/main/in/start";
+        constexpr auto backButton = "/actions/main/in/back";
+        constexpr auto guideButton = "/actions/main/in/guide";
         constexpr auto rTrigger = "/actions/main/in/rt";
         constexpr auto lTrigger = "/actions/main/in/lt";
         constexpr auto rThumbstick = "/actions/main/in/rthumb";
         constexpr auto lThumbstick = "/actions/main/in/lthumb";
         constexpr auto rThumbstickButton = "/actions/main/in/rthumbp";
         constexpr auto lThumbstickButton = "/actions/main/in/lthumbp";
+        constexpr auto upDpad = "/actions/main/in/updpad";
+        constexpr auto downDpad = "/actions/main/in/downdpad";
+        constexpr auto leftDpad = "/actions/main/in/leftdpad";
+        constexpr auto rightDpad = "/actions/main/in/rightdpad";
 
 
         constexpr auto hapticsLeft = "/actions/haptic/out/hapticsleft";
@@ -97,12 +102,17 @@ namespace input
         bool BButton();
         bool XButton();
         bool YButton();
-        bool MenuButton();
+        bool StartButton();
+        bool BackButton();
         bool GuideButton();
         bool RBButton();
         bool LBButton();
         bool LThumbButton();
         bool RThumbButton();
+        bool UPDpad();
+        bool DownDpad();
+        bool LeftDpad();
+        bool RightDpad();
 
         vr::VRActionHandle_t leftHapticActionHandle() const;
         vr::VRActionHandle_t rightHapticActionHandle() const;
@@ -136,12 +146,17 @@ namespace input
         DigitalAction m_bBut;
         DigitalAction m_xBut;
         DigitalAction m_yBut;
-        DigitalAction m_menuBut;
+        DigitalAction m_startBut;
+        DigitalAction m_backBut;
         DigitalAction m_guideBut;
         DigitalAction m_rbBut;
         DigitalAction m_lbBut;
         DigitalAction m_RThumbBut;
         DigitalAction m_LThumbBut;
+        DigitalAction m_upDpad;
+        DigitalAction m_downDpad;
+        DigitalAction m_leftDpad;
+        DigitalAction m_rightDpad;
 
         DigitalAction m_leftHaptic;
         DigitalAction m_rightHaptic;

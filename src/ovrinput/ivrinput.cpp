@@ -116,14 +116,20 @@ namespace input
         m_bBut(action_keys::bButton),
         m_xBut(action_keys::xButton),
         m_yBut(action_keys::yButton),
-        m_menuBut(action_keys::menuButton),
-        m_guideBut(action_keys::GuideButton),
+        m_startBut(action_keys::startButton),
+        m_backBut(action_keys::backButton),
+        m_guideBut(action_keys::guideButton),
         m_rbBut(action_keys::rbButton),
         m_lbBut(action_keys::lbButton),
         m_RThumbBut(action_keys::rThumbstickButton),
         m_LThumbBut(action_keys::lThumbstickButton),
+        m_upDpad(action_keys::upDpad),
+        m_downDpad(action_keys::downDpad),
+        m_leftDpad(action_keys::leftDpad),
+        m_rightDpad(action_keys::rightDpad),
         m_leftHaptic(action_keys::hapticsLeft),
         m_rightHaptic(action_keys::hapticsRight),
+ 
 
           m_left_hand(input_keys::left_hand), m_right_hand(input_keys::right_hand),
           m_sets({
@@ -203,9 +209,13 @@ namespace input
     {
         return isDigitalActionActivatedConstant(m_yBut);
     }
-    bool SteamIVRInput::MenuButton()
+    bool SteamIVRInput::StartButton()
     {
-        return isDigitalActionActivatedConstant(m_menuBut);
+        return isDigitalActionActivatedConstant(m_startBut);
+    }
+    bool SteamIVRInput::BackButton()
+    {
+        return isDigitalActionActivatedConstant(m_backBut);
     }
     bool SteamIVRInput::GuideButton()
     {
@@ -226,6 +236,22 @@ namespace input
     bool SteamIVRInput::RThumbButton()
     {
         return isDigitalActionActivatedConstant(m_RThumbBut);
+    }
+    bool SteamIVRInput::LeftDpad()
+    {
+        return isDigitalActionActivatedConstant(m_leftDpad);
+    }
+    bool SteamIVRInput::RightDpad()
+    {
+        return isDigitalActionActivatedConstant(m_rightDpad);
+    }
+    bool SteamIVRInput::UPDpad()
+    {
+        return isDigitalActionActivatedConstant(m_upDpad);
+    }
+    bool SteamIVRInput::DownDpad()
+    {
+        return isDigitalActionActivatedConstant(m_downDpad);
     }
 
 

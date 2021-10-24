@@ -1,6 +1,7 @@
 {
+   "action_manifest_version" : 0,
    "alias_info" : {},
-   "app_key" : "steam.overlay.1009850",
+   "app_key" : "system.generated.ovr_controller.exe",
    "bindings" : {
       "/actions/haptic" : {
          "haptics" : [
@@ -16,62 +17,135 @@
          "sources" : [
             {
                "inputs" : {},
-               "mode" : "none",
-               "path" : "/user/hand/left/input/b"
+               "mode" : "button",
+               "path" : "/user/hand/left/input/a"
             },
             {
                "inputs" : {},
-               "mode" : "none",
-               "path" : "/user/hand/right/input/b"
+               "mode" : "button",
+               "path" : "/user/hand/right/input/a"
             }
          ]
       },
-      "/actions/system" : {
+      "/actions/main" : {
          "sources" : [
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/system/in/pushtotalk"
+                     "output" : "/actions/main/in/b"
                   }
                },
                "mode" : "button",
+               "path" : "/user/hand/left/input/a"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/main/in/y"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/b"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/main/in/lthumbp"
+                  },
+                  "position" : {
+                     "output" : "/actions/main/in/lthumb"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/left/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "pull" : {
+                     "output" : "/actions/main/in/lt"
+                  }
+               },
+               "mode" : "trigger",
                "path" : "/user/hand/left/input/trigger"
-            }
-         ]
-      },
-      "/actions/motion" : {
-         "sources" : [
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/motion/in/lefthandspaceturn"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/b"
-            },
-            {
-               "inputs" : {
-                  "double" : {
-                     "output" : "/actions/motion/in/optionaloverridelefthandspacedrag"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/b"
             },
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/motion/in/swapspacedragtolefthandoverride"
+                     "output" : "/actions/main/in/lb"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/b"
+               "parameters" : {
+                  "click_activate_threshold" : "0.2",
+                  "click_deactivate_threshold" : "0.1",
+                  "force_input" : "force",
+                  "haptic_amplitude" : "0.25",
+                  "haptic_duration" : "0.1",
+                  "haptic_frequency" : "84"
+               },
+               "path" : "/user/hand/left/input/grip"
+            },
+            {
+               "inputs" : {
+                  "east" : {
+                     "output" : "/actions/main/in/rightdpad"
+                  },
+                  "north" : {
+                     "output" : "/actions/main/in/updpad"
+                  },
+                  "south" : {
+                     "output" : "/actions/main/in/downdpad"
+                  },
+                  "west" : {
+                     "output" : "/actions/main/in/leftdpad"
+                  }
+               },
+               "mode" : "dpad",
+               "parameters" : {
+                  "sub_mode" : "click"
+               },
+               "path" : "/user/hand/left/input/trackpad"
+            },
+            {
+               "inputs" : {
+                  "pull" : {
+                     "output" : "/actions/main/in/rt"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "north" : {
+                     "output" : "/actions/main/in/start"
+                  },
+                  "south" : {
+                     "output" : "/actions/main/in/back"
+                  }
+               },
+               "mode" : "dpad",
+               "parameters" : {
+                  "sub_mode" : "click"
+               },
+               "path" : "/user/hand/right/input/trackpad"
             },
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/motion/in/righthandspaceturn"
+                     "output" : "/actions/main/in/rthumbp"
+                  },
+                  "position" : {
+                     "output" : "/actions/main/in/rthumb"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/main/in/x"
                   }
                },
                "mode" : "button",
@@ -79,28 +153,36 @@
             },
             {
                "inputs" : {
-                  "double" : {
-                     "output" : "/actions/motion/in/optionaloverriderighthandspacedrag"
+                  "click" : {
+                     "output" : "/actions/main/in/a"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/b"
+               "path" : "/user/hand/right/input/a"
             },
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/motion/in/swapspacedragtorighthandoverride"
+                     "output" : "/actions/main/in/rb"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/b"
+               "parameters" : {
+                  "click_activate_threshold" : "0.2",
+                  "click_deactivate_threshold" : "0.1",
+                  "force_input" : "force",
+                  "haptic_duration" : "0.1",
+                  "haptic_frequency" : "84"
+               },
+               "path" : "/user/hand/right/input/grip"
             }
          ]
       }
    },
+   "category" : "steamvr_input",
    "controller_type" : "knuckles",
    "description" : "",
-   "name" : "OVRAS Knuckles Default",
+   "name" : "Saved OVR_Controller configuration for Index Controller",
    "options" : {},
    "simulated_actions" : []
 }

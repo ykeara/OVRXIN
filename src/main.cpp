@@ -11,6 +11,7 @@
 void updateControllerState(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadState);
 void updateButtonState(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadState);
 void updateAnalog(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadState);
+void vibrationCallback(PVIGEM_CLIENT client, PVIGEM_TARGET pad, std::atomic_bool control);
 BYTE floatToByte(float input);
 SHORT floatToShort(float input);
 
@@ -73,6 +74,8 @@ int main(int argc, char* argv[]) {
                 sys->AcknowledgeQuit_Exiting();
                 vigem_target_remove(client, pad);
                 vigem_target_free(pad);
+                vigem_disconnect(client);
+                vigem_free(client);
                 return 0;
             }
         }
@@ -80,20 +83,18 @@ int main(int argc, char* argv[]) {
 
         // The XINPUT_GAMEPAD structure is identical to the XUSB_REPORT structure
         // so we can simply take it "as-is" and cast it.
-        //
-        // Call this function on every input state change e.g. in a loop polling
-        // another joystick or network device or thermometer or... you get the idea.
         // Sends updates
         vigem_target_x360_update(client, pad, *reinterpret_cast<XUSB_REPORT*>(&state.Gamepad));
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
     
 
-    std::cout << "Hello World!";
     system("pause");
     vigem_target_remove(client, pad);
     vigem_target_free(pad);
+    vigem_disconnect(client);
+    vigem_free(client);
     return 0;
 }
 
@@ -130,10 +131,6 @@ void updateButtonState(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadState
     //Button MAsks
     //https://docs.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
     gamepadState.Gamepad.wButtons = static_cast<WORD>(0x0000);
-    if(vrInput.AButton())
-    {
-        std::cout << "weeeeeeee"<< std::endl;
-    }
 
     gamepadState.Gamepad.wButtons = vrInput.AButton() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x1000)
         : gamepadState.Gamepad.wButtons;
@@ -151,11 +148,22 @@ void updateButtonState(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadState
         : gamepadState.Gamepad.wButtons;
     gamepadState.Gamepad.wButtons = vrInput.LThumbButton() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0040)
         : gamepadState.Gamepad.wButtons;
-    gamepadState.Gamepad.wButtons = vrInput.MenuButton() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0010)
+    gamepadState.Gamepad.wButtons = vrInput.StartButton() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0010)
         : gamepadState.Gamepad.wButtons;
-    gamepadState.Gamepad.wButtons = vrInput.GuideButton() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0020)
+    gamepadState.Gamepad.wButtons = vrInput.BackButton() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0020)
         : gamepadState.Gamepad.wButtons;
-    //TODO dpad
+    //Undocumented "Guide Button" There is also an unknown/unassigned at 0x0800
+    gamepadState.Gamepad.wButtons = vrInput.GuideButton() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0400)
+        : gamepadState.Gamepad.wButtons;
+    gamepadState.Gamepad.wButtons = vrInput.UPDpad() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0001)
+        : gamepadState.Gamepad.wButtons;
+    gamepadState.Gamepad.wButtons = vrInput.DownDpad() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0002)
+        : gamepadState.Gamepad.wButtons;
+    gamepadState.Gamepad.wButtons = vrInput.LeftDpad() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0004)
+        : gamepadState.Gamepad.wButtons;
+    gamepadState.Gamepad.wButtons = vrInput.RightDpad() ? gamepadState.Gamepad.wButtons | static_cast<WORD>(0x0008)
+        : gamepadState.Gamepad.wButtons;
+
 }
 
 
@@ -174,4 +182,16 @@ void updateControllerState(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadS
     vrInput.update_states();
     updateAnalog(vrInput, gamepadState);
     updateButtonState(vrInput, gamepadState);
+}
+
+VOID CALLBACK notification(
+    PVIGEM_CLIENT Client,
+    PVIGEM_TARGET pad,
+    UCHAR LargeMotor,
+    UCHAR SmallMotor,
+    UCHAR LedNumber,
+    LPVOID UserData
+)
+{
+    //TODO vibrate global?
 }
