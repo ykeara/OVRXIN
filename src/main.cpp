@@ -7,6 +7,7 @@
 #include <Xinput.h>
 #include <chrono>
 #include <thread>
+#include "AppManifest.h"
 #pragma comment(lib, "setupapi.lib")
 
 void updateControllerState(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadState);
@@ -26,6 +27,7 @@ int main(int argc, char* argv[]) {
     {
         return 1;
     }
+    appManifest::initializeManifest();
 
     const auto client = vigem_alloc();
     if (client == nullptr)
