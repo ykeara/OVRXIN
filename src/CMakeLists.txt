@@ -21,7 +21,9 @@ add_executable(${PROJECT_NAME} main.cpp ${SOURCES} ${HEADERS})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     openvr
-    ViGEm)
+    ViGEm
+	imgui
+	glfw)
 target_include_directories(${PROJECT_NAME} PRIVATE include
     ovrinput
     ${CMAKE_CURRENT_SOURCE_DIR})
