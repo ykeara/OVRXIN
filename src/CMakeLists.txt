@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.19)
 add_subdirectory(include)
 # set the project name
-project(OVR_Controller)
+project(OVRXIN LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/ovrinput/ivrinput.cpp

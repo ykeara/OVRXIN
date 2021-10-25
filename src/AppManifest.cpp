@@ -1,3 +1,4 @@
+//Copyright 2021 Bennett Bartel
 #include "AppManifest.h"
 #include <filesystem>
 #include <iostream>

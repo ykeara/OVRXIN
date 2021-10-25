@@ -1,3 +1,4 @@
+//Copyright 2021 Bennett Bartel
 #include <windows.h>
 #include <iostream>
 #include "openvr.h"

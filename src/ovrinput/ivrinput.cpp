@@ -1,3 +1,4 @@
+//Copyright 2021 Bennett Bartel
 #include "ivrinput.h"
 #include "ivrinput_action.h"
 #include <openvr.h>

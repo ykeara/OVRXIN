@@ -1,3 +1,4 @@
+//Copyright 2021 Bennett Bartel
 #pragma once
 #include <iostream>
 #include <openvr.h>
