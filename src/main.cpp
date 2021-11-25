@@ -8,6 +8,8 @@
 #include <chrono>
 #include <thread>
 #include "AppManifest.h"
+#include "imgui.h"
+#include "UIWrapper.h"
 #pragma comment(lib, "setupapi.lib")
 
 void updateControllerState(input::SteamIVRInput& vrInput, XINPUT_STATE& gamepadState);
@@ -23,6 +25,7 @@ SHORT floatToShort(float input);
 int main(int argc, char* argv[]) {
     vr::EVRInitError err;
     vr::IVRSystem* sys = vr::VR_Init(&err, vr::VRApplication_Overlay);
+    UIWrapper uiWrap;
     if(err != vr::VRInitError_None)
     {
         return 1;
@@ -88,6 +91,8 @@ int main(int argc, char* argv[]) {
         // so we can simply take it "as-is" and cast it.
         // Sends updates
         vigem_target_x360_update(client, pad, *reinterpret_cast<XUSB_REPORT*>(&state.Gamepad));
+        uiWrap.Update();
+        std::cout << "refresh\n";
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
